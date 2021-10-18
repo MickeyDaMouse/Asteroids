@@ -10,6 +10,8 @@ void pause()
   text("left arrow and right arrow to turn the spaceship", width/2, 150);
   text("press space to shoot bullet", width/2, 200);
   text("avoid getting hit and destroy all asteroids to win", width/2, 250);
+  
+  text("press ' t ' to teleport",width/2,height-250);
 }
 
 void pauseClick()

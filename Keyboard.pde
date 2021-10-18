@@ -14,6 +14,7 @@ void keyReleased()
   if (keyCode == LEFT) left = false;
   if (keyCode == RIGHT) right = false;
   if (keyCode == ' ') myObjects.add(new Bullet(true));
+  if (key == 't') tp = true;
 }
 
 //detecting mouse 

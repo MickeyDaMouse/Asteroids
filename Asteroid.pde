@@ -6,10 +6,16 @@ class Asteroid extends GameObject
   Asteroid()
   {
     lives = 1;
-    location = new PVector(random(0, width), random(0, height));
     velocity = new PVector(0, 1);
     velocity.rotate(random(0, TWO_PI));
     size = 50;
+    
+    location = new PVector(random(0, width), random(0, height));
+    while(dist(location.x,location.y,myShip.location.x,myShip.location.y)<=myShip.size/2+size/2+20)
+    {
+      location = new PVector(random(0, width), random(0, height));
+    }
+    
   }
 
   Asteroid(int s, float x, float y)
@@ -40,8 +46,15 @@ class Asteroid extends GameObject
       {
         if (myObj.friendly && dist(location.x, location.y, myObj.location.x, myObj.location.y)<=size/2+myObj.size/2)
         {
-
           myObj.lives = 0;
+          int j=0;
+          while(j<30)
+          {
+            myObjects.add(new Effects(location));
+            j++;
+          }
+
+          
           lives = 0;
           if (size >= 25)
           {

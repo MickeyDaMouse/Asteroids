@@ -24,6 +24,7 @@ class Bullet extends GameObject
     } else
     {
       location = new PVector(myUFO.location.x, myUFO.location.y);
+      velocity = new PVector(myShip.location.x-myUFO.location.x, myShip.location.y-myUFO.location.y);
       velocity.setMag(10);
       
 

@@ -46,8 +46,9 @@ void game()
     myObj.show();
     myObj.act();
 
-    if (myObj.lives == 0)
+    if (myObj.lives <= 0)
     {
+      if(myObj instanceof UFO)  UFOalive = false;
       myObjects.remove(i);
     } else {
       i++;
@@ -59,6 +60,19 @@ void game()
   textSize(20);
   fill(255, 10);
   text("click to pause", 100, 20);
+  
+  //teleport cooldown
+  pushMatrix();
+  noStroke();
+  rectMode(CENTER);
+  textFont(text);
+  fill(0,255,0);
+  rect(width/2,20,tpCount/2,40);
+  fill(255);
+  text("teleport",width/2,20);
+
+  
+  popMatrix();
 
   //asteroid destroyed
   textSize(20);
@@ -77,6 +91,22 @@ void game()
   {
     mode = GAMEOVER;
   }
+  
+  //UFO timer
+  if(UFOtimer == 300)
+  {
+    myUFO = new UFO();
+    myObjects.add(myUFO);
+    UFOalive =true;
+    UFOtimer = 0;
+  }
+  else if(UFOalive == false)
+  {
+    UFOtimer ++;
+  }
+  
+
+  
 }
 
 

@@ -11,13 +11,14 @@ void  gameover()
     text("You Have Destroyed All Asteroids", width/2, height*3/4);
   } else
   {
-    background(255, 0, 0);
+    image(explode,width/2,height/2,width,height);
     textSize(150);
     fill(0, 255, 255);
     text("YOU LOOSE!", width/2, height/2);
     textSize(37);
     text("You Died And Your Ship Exploded In Space", width/2, height*3/4);
   }
+  text("Click to Reset",width/2,height-100);
 
   //decorational spaceship
   pushMatrix();
@@ -38,4 +39,28 @@ void  gameover()
 
 void gameoverClick()
 {
+  myObjects.clear();//clearing arraylist
+  
+  //resetting UFO and ship
+  myShip = new Spaceship();
+  myObjects.add(myShip);
+  myUFO = new UFO();
+  myObjects.add(myUFO);
+  
+  frame = 0;
+  
+  //resetting variables
+  shieldCount = 0;
+  shield = false;
+  count = 0;
+  asteroidsCount = 0;
+  asteroidAmount =0;
+  totalasteroids=0;
+  spawnAmount = 5;
+  UFOalive = true;
+  UFOtimer=0;
+  tp=false;
+  tpCount = 0;
+  
+  mode = INTRO;
 }

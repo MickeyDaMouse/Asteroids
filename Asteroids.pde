@@ -13,11 +13,16 @@ final int GAMEOVER = 3;
 PFont title;
 PFont text;
 
+//image
+PImage explode;
+
 //variable detecting a press on the keyboard
 boolean up, down, left, right, space;
 
 //creating  spaceship
 Spaceship myShip;
+int shieldCount = 0;
+boolean shield = false;
 
 //creating UFO
 UFO myUFO;
@@ -33,6 +38,13 @@ int asteroidsCount = 0;//variable for spawnning  asteroids
 int asteroidAmount =0;//number of asteroids that is spawned
 int totalasteroids=0;//total amount of big and small asteroids
 int spawnAmount = 5;//number of asteroids to spawn
+
+boolean UFOalive = true;//detects if UFO is alive or not
+int UFOtimer;//spawns UFO
+
+//teleport
+boolean tp;
+int tpCount;
 
 //animated gif
 PImage[] gif;
@@ -68,6 +80,8 @@ void setup()
     gif[i] = loadImage("frame_0" + i +"_delay-0.05s.gif");
     i++;
   }
+  
+  explode = loadImage("explode.jpg");
 }
 
 void draw()
